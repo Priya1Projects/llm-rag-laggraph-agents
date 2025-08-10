@@ -1,9 +1,9 @@
 
 #!/bin/bash
 
-# Railway provides the PORT environment variable
+
 # We'll use it for the main service (Streamlit in this case)
-export STREAMLIT_PORT=${PORT:-8501}
+export STREAMLIT_PORT=8501
 export FASTAPI_PORT=8000
 
 # Update supervisord config with the correct port

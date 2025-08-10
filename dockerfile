@@ -14,8 +14,8 @@ COPY . .
 RUN mkdir -p /var/log/supervisor
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-# Expose ports (Railway will use the PORT environment variable)
-EXPOSE $PORT
+# Expose ports 
+EXPOSE 8000 8501
 
 # Create startup script
 COPY start.sh /app/start.sh
