@@ -10,16 +10,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy source code
 COPY . .
-# Create supervisor configuration
-RUN mkdir -p /var/log/supervisor
-COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
+# Install tini for process management (optional)
+RUN apt-get update && apt-get install -y tini
 # Expose ports 
-EXPOSE 8000 7860 
-
-# Create startup script
-COPY start.sh /app/start.sh
-RUN chmod +x /app/start.sh
+EXPOSE 7860  8000 8501
 
 # Run both services
-CMD ["/app/start.sh"]
+CMD ["sh", "-c", "tini -- uvicorn src.api.main:app --host 0.0.0.0 --port 8000 & streamlit run src/frontend/app.py --server.port 8501 --server.address 0.0.0.0"]
