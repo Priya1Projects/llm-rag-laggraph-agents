@@ -1,3 +1,3 @@
 sdk: docker
-app_port: 8501
+app_port: 7860 
 
