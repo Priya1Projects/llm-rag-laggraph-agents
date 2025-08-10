@@ -11,12 +11,15 @@ import PyPDF2
 from dotenv import load_dotenv
 
 load_dotenv()
-
+# state management - query , documents and result string exchanged between nodes/agents 
 class GraphState(TypedDict):
     query: str
     documents: List[Document]
     generation: str
-
+# RAG Agents that will spilt documents into text chunks to create embedding and 
+# store in vectorstore for efficient and accurate retrieval (retrieve agent)
+# This will also send these embeddings ,query ,context to LLM GPT transformer model to 
+# generate accurate answers for the bot (Generate agent)
 class RAGAgent:
     def __init__(self):
         print("🚀 [bold blue]Initializing RAG System...[/bold blue]")
@@ -39,6 +42,7 @@ class RAGAgent:
         # print(self.embeddings)
         
         self.create_graph()
+
         
     def setup_vectorstore(self, documents: List[str]):
         text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50, separators=["\n\n", "\n", " ", ""])
@@ -82,6 +86,7 @@ Answer (be concise and accurate):"""
         print(" Response generated")
         return {"generation": response.content}
     
+    # creates a graph of nodes or agents with edges connecting them to create a directed acyclic graph
     def create_graph(self):
         workflow = StateGraph(GraphState)
         

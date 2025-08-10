@@ -30,29 +30,6 @@ class QueryResponse(BaseModel):
     answer: str
     sources: List[str]
 
-# Demo knowledge base
-DEMO_DOCS = [
-    """LangGraph is a library for building stateful, multi-actor applications with LLMs, used by thousands of developers in production. 
-    It extends LangChain Expression Language with the ability to coordinate multiple chains (or actors) across multiple steps of computation 
-    in a cyclic manner. It is inspired by Pregel and Apache Beam.""",
-    
-    """Retrieval-Augmented Generation (RAG) is a technique that enhances large language models by providing them with access to external 
-    knowledge sources. Instead of relying solely on training data, RAG systems can retrieve relevant information from databases, 
-    documents, or APIs to generate more accurate and up-to-date responses.""",
-    
-    """Vector databases are specialized database systems designed to store, index, and search high-dimensional vectors efficiently. 
-    They are essential for AI applications like semantic search, recommendation systems, and RAG implementations. Popular vector 
-    databases include Pinecone, Weaviate, Chroma, and FAISS.""",
-    
-    """AI agents are autonomous systems that can perceive their environment, make decisions, and take actions to achieve specific goals. 
-    Modern AI agents often use large language models as their reasoning engine, combined with tools and memory systems to perform 
-    complex tasks like research, analysis, and problem-solving.""",
-    
-    """Multi-agent systems involve multiple AI agents working together, either cooperatively or competitively, to solve complex problems. 
-    Each agent can have specialized roles and capabilities, allowing for more sophisticated and scalable AI solutions."""
-]
-
-
 
 
 @app.get("/")
