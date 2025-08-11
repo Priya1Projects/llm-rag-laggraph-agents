@@ -25,7 +25,7 @@ class RAGAgent:
         print("🚀 [bold blue]Initializing RAG System...[/bold blue]")
         
         
-
+        # LLM Instantiation
         self.llm = ChatOpenAI(
             model=os.getenv("MODEL_NAME", "gpt-4o-mini"),
             api_key=os.getenv("OPENAI_API_KEY")
@@ -34,6 +34,7 @@ class RAGAgent:
         self.vectorstore = None
         self.graph = None
         
+        # Embedding model for text chunking
         self.embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
         self.demo_docs = self.load_nutrition_pdfs()
         self.setup_vectorstore(self.demo_docs)
@@ -74,7 +75,7 @@ class RAGAgent:
         
         docs_txt = "\n\n".join([d.page_content for d in documents])
         
-        prompt = f"""You are a helpful AI assistant. Answer the question based on the provided context.
+        prompt = f"""You are a helpful and friendly AI assistant. Answer the question based on the provided context. Do not answer outside the context of Nutrition.
 
 Context: {docs_txt}
 
@@ -110,6 +111,7 @@ Answer (be concise and accurate):"""
         })
         
         return result
+    # Converts PDFs to texts
     def load_nutrition_pdfs(self):
         """Load nutrition PDF documents into the knowledge base"""
         pdf_dir = "data/PDFs"

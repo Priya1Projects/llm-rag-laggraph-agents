@@ -4,8 +4,8 @@ import json
 import time
 
 st.set_page_config(
-    page_title="🤖 RAG LangGraph Demo",
-    page_icon="🤖",
+    page_title=" RAG LangGraph Demo",
+    page_icon="",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -33,12 +33,12 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Header
-st.markdown('<h1 class="main-header">🤖 RAG LangGraph AI Agents</h1>', unsafe_allow_html=True)
-st.markdown('<div class="demo-tag">🚀 Live Cloud Demo - LLM + RAG + LangGraph</div>', unsafe_allow_html=True)
+st.markdown('<h1 class="main-header"> RAG LangGraph AI Agents</h1>', unsafe_allow_html=True)
+st.markdown('<div class="demo-tag"> Live Cloud Demo - LLM + RAG + LangGraph</div>', unsafe_allow_html=True)
 
 # Sidebar
 with st.sidebar:
-    st.header("⚙️ Configuration")
+    st.header(" Configuration")
     api_url = st.text_input("API URL", value="http://localhost:8000", help="Change to your deployed API URL")
     
     # Test API connection
@@ -92,7 +92,7 @@ if prompt := st.chat_input("Ask me anything about the nutrition..."):
     
     # Get AI response
     with st.chat_message("assistant"):
-        with st.spinner("🤖 LangGraph agents working..."):
+        with st.spinner(" LangGraph agents working..."):
             try:
                 start_time = time.time()
                 response = requests.post(

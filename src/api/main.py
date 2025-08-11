@@ -9,7 +9,7 @@ sys.path.append('/workspaces/llm-rag-laggraph-agents/')
 print(sys.path) 
 from src.agents.ragagent import RAGAgent
 
-app = FastAPI(title="🤖 RAG LangGraph API", version="1.0.0")
+app = FastAPI(title=" RAG LangGraph API", version="1.0.0")
 
 # Enable CORS for frontend
 app.add_middleware(
@@ -35,7 +35,7 @@ class QueryResponse(BaseModel):
 @app.get("/")
 async def root():
     return {
-        "message": "🤖 RAG LangGraph API is running!",
+        "message": " RAG LangGraph API is running!",
         "docs": "/docs",
         "status": "healthy"
     }
@@ -47,7 +47,7 @@ async def health():
 @app.post("/query", response_model=QueryResponse)
 async def query_rag(request: QueryRequest):
     try:
-        print(f"📝 Processing query: {request.question}")
+        print(f" Processing query: {request.question}")
         
         # Run the LangGraph workflow
         result = graph.invoke({"query": request.question})

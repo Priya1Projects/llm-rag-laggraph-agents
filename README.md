@@ -2,17 +2,20 @@
 # MULTI AGENT RAG SYSTEM
 
 This is simple RAG System to demonstrate how to build a simple Chat Assistant with Langraph
-This assistant is a nutritional assistant that will answer your daily nutrition based questions.
+This assistant is a nutritional assistant that will answer your daily nutrition based questions
 
 # Architecture 
 
-User query -> Retrival agent ( retrieves from PDFs knowledge base) -> Generate Agent (takes embeddings and query and generates relevant response)
+User query -> Retrival agent ( retrieves relevant documents using Vectore Store similarity search ) -> Generate Agent (Passes Query, documents to OpenAI gpt-4o-mini to generate a accurate response)
+
+Langraph used to showcase how to create connected and stateful agents
 
 # Tech Stack
 
-Python (Langchain, Langraph, openAI, sentence transformers)
+Python (Langchain, Langraph, openAI, sentence transformers,FAISS)
 FASTAPi
 Streamlit
+
 Docker
 Github codespaces for development
 HuggingFace Spaces for deployment 
