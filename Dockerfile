@@ -1,0 +1,19 @@
+FROM python:3.10-slim
+
+WORKDIR /app
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends build-essential curl tini && rm -rf /var/lib/apt/lists/*
+
+# Copy requirement files first (to leverage Docker cache)
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy rest of the code
+COPY . .
+
+# Expose required ports
+EXPOSE 7860 8000
+
+# Use supervisord to run both apps
+CMD ["/usr/bin/tini", "--", "supervisord", "-c", "supervisord.conf"]
